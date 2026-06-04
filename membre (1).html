@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Espace Membre Premium — Mawa Ndiaye</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --vert: #0F4C3A; --orange: #D9772B; --or: #FFD700;
+  --beige: #FAF4EB; --texte: #2C2C2C; --gris: #6A6A60;
+  --bordure: #E0D5C0; --blanc: #FFFFFF; --bleu: #0A2463;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: var(--beige); color: var(--texte); min-height: 100vh; }
+
+/* LOGIN */
+.login-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem;
+  background: var(--vert); position: relative; overflow: hidden;
+}
+.login-wrap::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(138,154,123,.18) 1px, transparent 1px); background-size: 22px 22px; pointer-events: none; }
+.login-card {
+  background: var(--blanc); border-radius: 16px; padding: 2.5rem;
+  max-width: 420px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  position: relative;
+}
+.login-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--vert), var(--or), var(--orange)); border-radius: 16px 16px 0 0; }
+.login-logo { text-align: center; margin-bottom: 1.5rem; }
+.login-logo h1 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--vert); margin-bottom: 4px; }
+.login-logo p { font-size: 12px; color: var(--gris); }
+.login-icon { width: 60px; height: 60px; background: var(--vert); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 24px; }
+.f-group { margin-bottom: 16px; }
+.f-label { display: block; font-size: 13px; font-weight: 700; color: var(--bleu); margin-bottom: 5px; }
+.f-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--bordure); border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 14px; outline: none; transition: border-color .2s; background: #FAFAFA; }
+.f-input:focus { border-color: var(--vert); background: #fff; }
+.btn-login { width: 100%; background: var(--vert); color: #fff; border: none; border-radius: 8px; padding: 13px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all .2s; margin-top: 8px; }
+.btn-login:hover { background: #1A6B52; transform: translateY(-1px); }
+.login-note { font-size: 12px; color: var(--gris); text-align: center; margin-top: 1rem; line-height: 1.7; }
+.login-error { background: #fde8e8; border: 1px solid #f5c6c6; color: #c0392b; padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-bottom: 14px; display: none; text-align: center; }
+
+/* DASHBOARD */
+.dashboard { display: none; }
+header {
+  background: var(--vert); padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 64px; flex-wrap: wrap; gap: 1rem; position: relative;
+}
+header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--or), var(--orange)); }
+.header-logo { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--beige); padding: 14px 0; }
+.header-membre { display: flex; align-items: center; gap: 12px; }
+.membre-badge { background: var(--or); color: var(--vert); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+.btn-logout { background: transparent; border: 1px solid rgba(245,232,211,.3); color: rgba(245,232,211,.7); padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; transition: all .2s; font-family: 'Lato', sans-serif; }
+.btn-logout:hover { border-color: var(--or); color: var(--or); }
+
+.main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* BIENVENUE */
+.welcome-card {
+  background: var(--vert); border-radius: 14px; padding: 1.75rem 2rem;
+  margin-bottom: 2rem; position: relative; overflow: hidden;
+}
+.welcome-card::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(138,154,123,.15) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
+.welcome-card h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--beige); margin-bottom: 6px; position: relative; }
+.welcome-card h2 span { color: var(--or); }
+.welcome-card p { font-size: 13px; color: rgba(245,232,211,.75); position: relative; }
+.welcome-infos { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; position: relative; }
+.welcome-info { background: rgba(255,215,0,.12); border: 1px solid rgba(255,215,0,.25); border-radius: 8px; padding: 8px 14px; }
+.info-label { font-size: 10px; color: rgba(245,232,211,.6); text-transform: uppercase; letter-spacing: .5px; }
+.info-val { font-size: 14px; font-weight: 700; color: var(--or); }
+
+/* GRILLE RESSOURCES */
+.section-titre { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--vert); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+.ressources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+.ressource-card {
+  background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px;
+  padding: 1.25rem; transition: all .2s; border-left: 4px solid var(--vert);
+}
+.ressource-card:hover { box-shadow: 0 6px 20px rgba(15,76,58,.1); transform: translateY(-2px); }
+.ressource-card.orange { border-left-color: var(--orange); }
+.ressource-card.or { border-left-color: var(--or); }
+.r-icon { font-size: 24px; margin-bottom: 8px; }
+.r-titre { font-size: 14px; font-weight: 700; color: var(--vert); margin-bottom: 4px; }
+.r-desc { font-size: 12px; color: var(--gris); line-height: 1.6; margin-bottom: 12px; }
+.r-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 10px; }
+.badge-new { background: #E8F2EC; color: var(--vert); }
+.badge-video { background: #fde8d8; color: var(--orange); }
+.badge-soon { background: #f5f5f5; color: var(--gris); }
+.badge-cert { background: rgba(255,215,0,.2); color: #8A6200; }
+.btn-ressource { display: inline-flex; align-items: center; gap: 6px; background: var(--vert); color: #fff; border: none; border-radius: 6px; padding: 8px 14px; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; transition: all .2s; font-family: 'Lato', sans-serif; }
+.btn-ressource:hover { background: #1A6B52; }
+.btn-ressource.orange { background: var(--orange); }
+.btn-ressource.orange:hover { background: #C56820; }
+.btn-ressource.disabled { background: #ddd; color: var(--gris); cursor: not-allowed; pointer-events: none; }
+
+/* WEBINAIRE */
+.webinaire-card {
+  background: var(--bleu); border-radius: 14px; padding: 1.75rem 2rem;
+  margin-bottom: 2rem; border: 2px solid var(--or); position: relative; overflow: hidden;
+}
+.webinaire-card::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,215,0,.08) 1px, transparent 1px); background-size: 18px 18px; pointer-events: none; }
+.live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,0,0,.15); border: 1px solid rgba(255,80,80,.4); color: #ff6b6b; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; position: relative; }
+.live-dot { width: 7px; height: 7px; background: #ff4444; border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+.web-titre { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--or); margin-bottom: 6px; position: relative; }
+.web-infos { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; position: relative; }
+.web-info { text-align: center; }
+.web-info-val { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--or); }
+.web-info-lab { font-size: 11px; color: rgba(245,232,211,.6); }
+
+/* CERTIFICATION */
+.certif-card {
+  background: linear-gradient(135deg, var(--vert) 0%, #1A6B52 100%);
+  border-radius: 14px; padding: 1.75rem 2rem;
+  margin-bottom: 2rem; border: 1px solid rgba(255,215,0,.3);
+}
+.certif-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 1rem; margin-top: 1rem; }
+.certif-step { background: rgba(255,255,255,.08); border-radius: 10px; padding: 1rem; text-align: center; }
+.certif-num { width: 36px; height: 36px; border-radius: 50%; background: var(--or); color: var(--vert); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; margin: 0 auto 8px; }
+.certif-titre { font-size: 13px; font-weight: 700; color: var(--beige); margin-bottom: 4px; }
+.certif-desc { font-size: 11px; color: rgba(245,232,211,.65); }
+
+/* CARTE MEMBRE */
+.carte-membre {
+  background: linear-gradient(135deg, #1A1A18 0%, #2C2C28 100%);
+  border: 2px solid var(--or); border-radius: 16px; padding: 1.5rem 2rem;
+  margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.carte-info h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--or); margin-bottom: 4px; }
+.carte-info p { font-size: 12px; color: rgba(245,232,211,.6); }
+.carte-numero { font-family: monospace; font-size: 13px; color: var(--or); background: rgba(255,215,0,.1); padding: 4px 10px; border-radius: 6px; margin-top: 6px; display: inline-block; }
+
+/* CONTACT */
+.contact-card { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.btn-wa-dash { background: #25D366; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all .2s; font-family: 'Lato', sans-serif; }
+.btn-wa-dash:hover { opacity: .9; transform: translateY(-1px); }
+
+footer { background: #1A1A18; color: rgba(245,232,211,.45); padding: 1rem 2rem; text-align: center; font-size: 12px; }
+footer a { color: rgba(245,232,211,.6); text-decoration: none; }
+
+@media(max-width:600px){ .main{padding:1rem;} .welcome-card, .webinaire-card, .certif-card{padding:1.25rem;} }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-icon">🔐</div>
+      <h1>Espace Membre Premium</h1>
+      <p>L'Art du Marketing et du Management Réussi</p>
+    </div>
+    <div class="login-error" id="loginError">Mot de passe incorrect. Contactez WhatsApp : +221 77 746 43 44</div>
+    <div class="f-group">
+      <label class="f-label">Votre mot de passe personnel</label>
+      <input type="password" class="f-input" id="mdpInput" placeholder="Entrez votre mot de passe" onkeypress="if(event.key==='Enter') connexion()">
+    </div>
+    <button class="btn-login" onclick="connexion()">Accéder à mon espace →</button>
+    <div class="login-note">
+      Mot de passe reçu par WhatsApp après votre adhésion.<br>
+      Problème d'accès ? <a href="https://wa.me/221777464344" target="_blank" style="color:var(--vert);font-weight:700;">Contactez-nous</a>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+
+  <header>
+    <div class="header-logo">L'Art du Marketing et du Management Réussi</div>
+    <div class="header-membre">
+      <span class="membre-badge">⭐ Membre Premium</span>
+      <span style="font-size:13px;color:rgba(245,232,211,.7);" id="header-nom"></span>
+      <button class="btn-logout" onclick="deconnexion()">Déconnexion</button>
+    </div>
+  </header>
+
+  <div class="main">
+
+    <!-- BIENVENUE -->
+    <div class="welcome-card">
+      <h2>Bienvenue, <span id="dash-nom">Membre Premium</span> !</h2>
+      <p>Vous avez accès à tous les contenus exclusifs de votre espace membre.</p>
+      <div class="welcome-infos">
+        <div class="welcome-info">
+          <div class="info-label">Statut</div>
+          <div class="info-val">⭐ Premium actif</div>
+        </div>
+        <div class="welcome-info">
+          <div class="info-label">Abonnement</div>
+          <div class="info-val">5 000 FCFA/mois</div>
+        </div>
+        <div class="welcome-info">
+          <div class="info-label">Accès valable jusqu'au</div>
+          <div class="info-val" id="date-fin-dash">—</div>
+        </div>
+        <div class="welcome-info">
+          <div class="info-label">N° membre</div>
+          <div class="info-val" id="num-membre">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCHAIN WEBINAIRE -->
+    <div class="section-titre">🔴 Prochain webinaire live</div>
+    <div class="webinaire-card">
+      <div class="live-badge"><div class="live-dot"></div> Live exclusif membres premium</div>
+      <div class="web-titre">Marketing Digital & IA : Transformer sa présence en ligne en machine à clients</div>
+      <div style="font-size:13px;color:rgba(245,232,211,.7);position:relative;">Analyse, stratégie et questions/réponses en direct avec Mawa Ndiaye</div>
+      <div class="web-infos">
+        <div class="web-info"><div class="web-info-val">1er vendredi</div><div class="web-info-lab">du mois</div></div>
+        <div class="web-info"><div class="web-info-val">18h00</div><div class="web-info-lab">Heure Dakar (GMT)</div></div>
+        <div class="web-info"><div class="web-info-val">90 min</div><div class="web-info-lab">Durée estimée</div></div>
+      </div>
+      <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+le+lien+du+prochain+webinaire" target="_blank" class="btn-ressource" style="position:relative;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.11 1.522 5.84L0 24l6.335-1.502A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.064-1.406l-.363-.215-3.762.892.923-3.656-.237-.376A9.818 9.818 0 1112 21.818z"/></svg>
+        Recevoir le lien de connexion
+      </a>
+    </div>
+
+    <!-- RESSOURCES DU MOIS -->
+    <div class="section-titre">📚 Ressources du mois</div>
+    <div class="ressources-grid">
+      <div class="ressource-card">
+        <div class="r-icon">📄</div>
+        <span class="r-badge badge-new">Nouveau</span>
+        <div class="r-titre">Guide Marketing Digital & IA</div>
+        <div class="r-desc">Framework complet pour intégrer l'IA dans votre stratégie marketing sur les marchés africains.</div>
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+le+guide+Marketing+Digital+%26+IA" target="_blank" class="btn-ressource">Télécharger PDF</a>
+      </div>
+      <div class="ressource-card orange">
+        <div class="r-icon">🎬</div>
+        <span class="r-badge badge-video">Vidéo</span>
+        <div class="r-titre">Tunnel de vente — Marchés africains</div>
+        <div class="r-desc">Capsule vidéo de 12 minutes : adapter votre tunnel aux réalités du consommateur africain.</div>
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+la+vid%C3%A9o+sur+le+tunnel+de+vente" target="_blank" class="btn-ressource orange">Accéder à la vidéo</a>
+      </div>
+      <div class="ressource-card">
+        <div class="r-icon">🛠️</div>
+        <span class="r-badge badge-new">Nouveau</span>
+        <div class="r-titre">Template Personas & Offres digitales</div>
+        <div class="r-desc">Modèle prêt à l'emploi pour identifier vos personas et structurer vos offres digitales.</div>
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+le+template+Personas" target="_blank" class="btn-ressource">Télécharger template</a>
+      </div>
+      <div class="ressource-card orange">
+        <div class="r-icon">🌍</div>
+        <span class="r-badge badge-new">Analyse</span>
+        <div class="r-titre">Analyse marchés émergents — Juin 2026</div>
+        <div class="r-desc">Décryptage mensuel des tendances marketing en Afrique, UEMOA et marchés émergents.</div>
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+l%27analyse+march%C3%A9s+juin+2026" target="_blank" class="btn-ressource orange">Recevoir l'analyse</a>
+      </div>
+      <div class="ressource-card or">
+        <div class="r-icon">🔴</div>
+        <span class="r-badge badge-video">Replay</span>
+        <div class="r-titre">Replay — Webinaire Mai 2026</div>
+        <div class="r-desc">Revoir le webinaire du mois dernier : Management & Leadership en contexte africain.</div>
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+le+replay+du+webinaire+mai+2026" target="_blank" class="btn-ressource">Voir le replay</a>
+      </div>
+      <div class="ressource-card">
+        <div class="r-icon">📊</div>
+        <span class="r-badge badge-soon">Bientôt</span>
+        <div class="r-titre">Étude de cas — SOGEPA Sénégal</div>
+        <div class="r-desc">Cas pratique complet : stratégie marketing immobilier en Afrique de l'Ouest. Disponible le 15 juin.</div>
+        <a class="btn-ressource disabled">Disponible le 15 juin</a>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section-titre">🏆 Mes formations & certifications</div>
+    <div class="certif-card">
+      <div style="font-size:15px;font-weight:700;color:var(--beige);margin-bottom:4px;">Obtenez votre certificat officiel</div>
+      <div style="font-size:13px;color:rgba(245,232,211,.7);margin-bottom:1rem;">Chaque formation est sanctionnée par un certificat signé par Mawa Ndiaye après réussite du test.</div>
+      <div class="certif-steps">
+        <div class="certif-step">
+          <div class="certif-num">1</div>
+          <div class="certif-titre">Suivre la formation</div>
+          <div class="certif-desc">Vidéo, guide PDF ou webinaire replay</div>
+        </div>
+        <div class="certif-step">
+          <div class="certif-num">2</div>
+          <div class="certif-titre">Passer le test</div>
+          <div class="certif-desc">QCM en ligne — score minimum 70%</div>
+        </div>
+        <div class="certif-step">
+          <div class="certif-num">3</div>
+          <div class="certif-titre">Recevoir le certificat</div>
+          <div class="certif-desc">PDF officiel signé par Mawa Ndiaye</div>
+        </div>
+        <div class="certif-step">
+          <div class="certif-num">4</div>
+          <div class="certif-titre">Valoriser sur LinkedIn</div>
+          <div class="certif-desc">Partageable sur votre profil pro</div>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+passer+le+test+de+certification+Marketing+Digital" target="_blank" class="btn-ressource">Passer le test — Marketing Digital</a>
+        <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+passer+le+test+de+certification+Tunnel+de+vente" target="_blank" class="btn-ressource orange">Test — Tunnel de vente</a>
+      </div>
+    </div>
+
+    <!-- CARTE DE MEMBRE -->
+    <div class="section-titre">🪪 Ma carte de membre</div>
+    <div class="carte-membre">
+      <div class="carte-info">
+        <h3>Carte de membre officielle</h3>
+        <p>Communauté Premium — L'Art du Marketing et du Management Réussi</p>
+        <div class="carte-numero" id="carte-numero">N° PREMIUM-2026-XXXX</div>
+      </div>
+      <a href="https://wa.me/221777464344?text=Bonjour%2C+je+suis+membre+premium+et+je+veux+t%C3%A9l%C3%A9charger+ma+carte+de+membre" target="_blank" class="btn-ressource" style="background:var(--or);color:var(--vert);">Télécharger ma carte PDF</a>
+    </div>
+
+    <!-- CONTACT VIP -->
+    <div class="section-titre">📱 Support membres premium</div>
+    <div class="contact-card">
+      <div>
+        <div style="font-size:15px;font-weight:700;color:var(--vert);margin-bottom:4px;">Ligne WhatsApp VIP</div>
+        <div style="font-size:13px;color:var(--gris);">Accès direct à Mawa Ndiaye — Réponse sous 24h en semaine</div>
+      </div>
+      <a class="btn-wa-dash" href="https://wa.me/221777464344?text=Bonjour+Mawa%2C+je+suis+membre+premium+et+j%27ai+une+question" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.11 1.522 5.84L0 24l6.335-1.502A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.064-1.406l-.363-.215-3.762.892.923-3.656-.237-.376A9.818 9.818 0 1112 21.818z"/></svg>
+        Contacter Mawa sur WhatsApp VIP
+      </a>
+    </div>
+
+  </div><!-- fin main -->
+
+  <footer>
+    © 2026 Mawa Ndiaye — L'Art du Marketing et du Management Réussi &nbsp;·&nbsp;
+    <a href="premium_mawa_ndiaye.html">Retour à l'accueil</a>
+  </footer>
+
+</div><!-- fin dashboard -->
+
+<script>
+// Mots de passe valides — à mettre à jour manuellement chaque mois
+var mdpValides = {
+  'Mawa2026Premium': { nom: 'Membre Premium', num: 'PREMIUM-2026-0001' },
+  'Marketing2026':   { nom: 'Membre Premium', num: 'PREMIUM-2026-0002' },
+  'ArtMarketing26':  { nom: 'Membre Premium', num: 'PREMIUM-2026-0003' }
+};
+
+function connexion() {
+  var mdp = document.getElementById('mdpInput').value.trim();
+  var err = document.getElementById('loginError');
+
+  if(mdpValides[mdp]) {
+    var membre = mdpValides[mdp];
+    err.style.display = 'none';
+
+    // Calculer date de fin (1 mois)
+    var fin = new Date();
+    fin.setMonth(fin.getMonth() + 1);
+    var dateFin = fin.toLocaleDateString('fr-FR', {day:'2-digit', month:'long', year:'numeric'});
+
+    // Numéro membre
+    var num = membre.num;
+
+    // Afficher dashboard
+    document.getElementById('loginWrap').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('dash-nom').textContent = membre.nom;
+    document.getElementById('header-nom').textContent = membre.nom;
+    document.getElementById('date-fin-dash').textContent = dateFin;
+    document.getElementById('num-membre').textContent = num;
+    document.getElementById('carte-numero').textContent = 'N° ' + num;
+
+  } else {
+    err.style.display = 'block';
+    document.getElementById('mdpInput').value = '';
+    document.getElementById('mdpInput').focus();
+  }
+}
+
+function deconnexion() {
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('loginWrap').style.display = 'flex';
+  document.getElementById('mdpInput').value = '';
+}
+</script>
+</body>
+</html>

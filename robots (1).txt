@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mawandiayealt.github.io/mawa-ndiaye-premium/sitemap.xml
